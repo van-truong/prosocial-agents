@@ -46,10 +46,11 @@
   .duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
   .duo .mini{margin-bottom:0}
   .duo .mini:last-child{border-left:2px dashed #C9BC98;padding-left:20px}
-  /* A + merged C, split by a dashed vertical separator */
-  .acombo{display:grid;grid-template-columns:600px 1fr}
-  .cwrap{border-left:2px dashed #C9BC98;margin-left:16px;padding-left:20px;
-         display:flex;flex-direction:column;justify-content:center}
+  /* Panel A (levers, left) + Panel B (scenes, right), split by a dashed vertical separator */
+  .acombo{display:grid;grid-template-columns:1fr 600px}
+  .cwrap{grid-column:1;grid-row:1;margin-right:16px;padding-right:20px;
+         display:flex;flex-direction:column;justify-content:flex-start}
+  .swrap{grid-column:2;grid-row:1;border-left:2px dashed #C9BC98;margin-left:16px;padding-left:20px}
   /* dashed horizontal separator between sections */
   .hsep{border:none;border-top:2px dashed #C9BC98;margin:22px 0 16px}
 
@@ -133,11 +134,13 @@ text becomes differs.
 -->
 <div class="fig">
 
-  <!-- ============ PANEL A : one dilemma, two levers ============ -->
+  <!-- ====== Panel A (levers, left) + Panel B (dilemma scenes, right) ====== -->
   <div>
-    <div class="panel-head"><span class="pl">A</span></div>
     <div class="card">
       <div class="acombo">
+      <!-- RIGHT column: dilemma scenes = Panel B -->
+      <div class="swrap">
+      <div class="panel-head"><span class="pl">B</span></div>
       <svg viewBox="0 0 600 500" width="600" height="500">
         <defs>
           <marker id="a-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
@@ -241,8 +244,8 @@ text becomes differs.
             <line x1="28" y1="10" x2="52" y2="10" stroke="#4A7A3E" stroke-width="2.6"/>
             <line x1="28" y1="19" x2="52" y2="19" stroke="#A8C879" stroke-width="2.2"/>
             <line x1="28" y1="28" x2="46" y2="28" stroke="#A8C879" stroke-width="2.2"/>
-            <!-- handshake (original clasp shape) below the contract; +2 finger lines on 2nd hand -->
-            <g transform="translate(-34,8)">
+            <!-- handshake (original clasp shape) below the contract; +2 finger lines on 2nd hand; enlarged ~1.5x -->
+            <g transform="translate(40,56) scale(1.5) translate(-74,-48)">
               <path d="M60 48 l11 -8 9 5 -7 10 -9 1 z" fill="#E7F1E4" stroke="#4A7A3E" stroke-width="1.8" stroke-linejoin="round"/>
               <path d="M88 46 l-8 -5 -9 4" fill="none" stroke="#4A7A3E" stroke-width="1.8" stroke-linecap="round"/>
               <path d="M85 49 l-7 -4 -8 4" fill="none" stroke="#4A7A3E" stroke-width="1.4" stroke-linecap="round"/>
@@ -312,8 +315,8 @@ text becomes differs.
             <circle cx="158" cy="0" r="8" fill="#3F6A85"/>
             <text x="158" y="3.5" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">§</text>
           </g>
-          <!-- text-to-code icon between the robots -->
-          <g transform="translate(124,88) scale(0.7)">
+          <!-- text-to-code icon between the robots (enlarged 0.7 -> 0.9, re-centered) -->
+          <g transform="translate(113.6,81.4) scale(0.9)">
             <rect x="6" y="9" width="34" height="48" rx="5" fill="#fff" stroke="#3F6A85" stroke-width="2"/>
             <line x1="12" y1="21" x2="34" y2="21" stroke="#3F6A85" stroke-width="2.4"/>
             <line x1="12" y1="30" x2="34" y2="30" stroke="#8EAFCE" stroke-width="2.2"/>
@@ -376,10 +379,11 @@ text becomes differs.
         </g>
 
       </svg>
+      </div><!-- /swrap : scenes (Panel B) -->
 
-      <!-- ===== PANEL B : levers concept (right of dashed separator) ===== -->
+      <!-- ===== LEFT column: levers concept = Panel A ===== -->
       <div class="cwrap">
-        <div class="panel-head"><span class="pl">B</span></div>
+        <div class="panel-head"><span class="pl">A</span></div>
 
         <!-- levers concept : contracts act from outside, we-frames from inside -->
         <div>
