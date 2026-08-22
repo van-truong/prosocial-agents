@@ -48,9 +48,9 @@
   .duo .mini:last-child{border-left:2px dashed #C9BC98;padding-left:20px}
   /* Panel A (levers, left) + Panel B (scenes, right), split by a dashed vertical separator */
   .acombo{display:grid;grid-template-columns:1fr 1fr}
-  .cwrap{grid-column:1;grid-row:1;margin-right:16px;padding-right:20px;
+  .cwrap{grid-column:1;grid-row:1;padding-right:36px;
          display:flex;flex-direction:column;justify-content:flex-start}
-  .swrap{grid-column:2;grid-row:1;border-left:2px dashed #C9BC98;margin-left:16px;padding-left:20px}
+  .swrap{grid-column:2;grid-row:1;border-left:2px dashed #C9C9C9;padding-left:36px}
   /* dashed horizontal separator between sections */
   .hsep{border:none;border-top:2px dashed #C9BC98;margin:22px 0 16px}
 
@@ -141,7 +141,7 @@ text becomes differs.
       <!-- RIGHT column: dilemma scenes = Panel B -->
       <div class="swrap">
       <div class="panel-head"><span class="pl">B</span> Three experimental contract conditions</div>
-      <svg viewBox="0 0 600 500" width="600" height="500">
+      <svg viewBox="0 0 600 560" width="600" height="560">
         <defs>
           <marker id="a-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M0 0 L10 5 L0 10 Z" fill="#3F6A85"/></marker>
@@ -155,16 +155,16 @@ text becomes differs.
 
         <!-- ===== SCENE 1 : no premeditated contract -> mutual defection (Nash) ===== -->
         <g transform="translate(0,4)">
-          <rect x="6" y="0" width="588" height="156" rx="18" fill="#F3EEE3" stroke="#DDD3BC" stroke-width="1.5"/>
-          <text x="24" y="26" font-size="14.5" font-weight="700" fill="#2B2B2B">No premeditated contract</text>
+          <rect x="6" y="0" width="516" height="176" rx="18" fill="#F3EEE3" stroke="#DDD3BC" stroke-width="1.5"/>
+          <text x="24" y="26" font-size="18" font-weight="700" fill="#2B2B2B">No premeditated contract</text>
           <!-- light-blue "I" thought bubbles -->
-          <g transform="translate(95,52)">
+          <g transform="translate(68,52)">
             <ellipse cx="0" cy="0" rx="18" ry="12" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.6"/>
             <circle cx="-3" cy="18" r="2.6" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
             <circle cx="0" cy="25" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
             <text x="0" y="5" text-anchor="middle" font-size="14" font-weight="700" fill="#6B6B5A">I</text>
           </g>
-          <g transform="translate(225,52)">
+          <g transform="translate(252,52)">
             <ellipse cx="0" cy="0" rx="18" ry="12" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.6"/>
             <circle cx="3" cy="18" r="2.6" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
             <circle cx="0" cy="25" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
@@ -220,7 +220,7 @@ text becomes differs.
             <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
             <path d="M30 30 L48 48" stroke="#C44A40" stroke-width="2.2" marker-end="url(#a-red)"/>
           </g>
-          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">Nash equilibrium</text>
+          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" font-weight="600" fill="#6B6B5A">Nash equilibrium</text>
           <line x1="392" y1="94" x2="424" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
           <!-- payout: nothing gained -->
           <circle cx="458" cy="94" r="8" fill="none" stroke="#B7B2A2" stroke-width="1.6" stroke-dasharray="3 3"/>
@@ -228,9 +228,9 @@ text becomes differs.
         </g>
 
         <!-- ===== SCENE 2 : natural language agreement -> (5,5) if honored ===== -->
-        <g transform="translate(0,172)">
-          <rect x="6" y="0" width="588" height="156" rx="18" fill="#EFF6EA" stroke="#A8C879" stroke-width="1.5"/>
-          <text x="24" y="26" font-size="14.5" font-weight="700" fill="#2B2B2B">Natural language agreement</text>
+        <g transform="translate(0,192)">
+          <rect x="6" y="0" width="516" height="176" rx="18" fill="#EFF6EA" stroke="#A8C879" stroke-width="1.5"/>
+          <text x="24" y="26" font-size="18" font-weight="700" fill="#2B2B2B">Natural language agreement</text>
           <!-- shared spoken rule -->
           <g transform="translate(98,34)">
             <rect x="0" y="0" width="180" height="26" rx="8" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
@@ -295,7 +295,7 @@ text becomes differs.
             <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
             <path d="M54 54 L36 36" stroke="#4A7A3E" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#a-green)"/>
           </g>
-          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">if honored</text>
+          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" font-weight="600" fill="#6B6B5A">if honored</text>
           <line x1="392" y1="94" x2="424" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
           <!-- payout: higher payoff unlocked -->
           <g fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2">
@@ -305,9 +305,9 @@ text becomes differs.
         </g>
 
         <!-- ===== SCENE 3 : codified contract -> (5,5) enforced ===== -->
-        <g transform="translate(0,340)">
-          <rect x="6" y="0" width="588" height="156" rx="18" fill="#EAF2F8" stroke="#8EAFCE" stroke-width="1.5"/>
-          <text x="24" y="26" font-size="14.5" font-weight="700" fill="#2B2B2B">Codified contract policies</text>
+        <g transform="translate(0,380)">
+          <rect x="6" y="0" width="516" height="176" rx="18" fill="#EAF2F8" stroke="#8EAFCE" stroke-width="1.5"/>
+          <text x="24" y="26" font-size="18" font-weight="700" fill="#2B2B2B">Codified contract policies</text>
           <!-- the governing code contract -->
           <g transform="translate(98,44)">
             <rect x="0" y="0" width="148" height="26" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
@@ -369,7 +369,7 @@ text becomes differs.
             <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
             <path d="M54 54 L36 36" stroke="#4A7A3E" stroke-width="2.2" marker-end="url(#a-green)"/>
           </g>
-          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">enforced</text>
+          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" font-weight="600" fill="#6B6B5A">enforced</text>
           <line x1="392" y1="94" x2="424" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
           <!-- payout: higher payoff unlocked -->
           <g fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2">
@@ -383,7 +383,7 @@ text becomes differs.
 
       <!-- ===== LEFT column: levers concept = Panel A ===== -->
       <div class="cwrap">
-        <div class="panel-head"><span class="pl">A</span> Intrinsic vs. extrinsic mechanisms in social dilemmas</div>
+        <div class="panel-head"><span class="pl">A</span> Intrinsic vs. extrinsic mechanisms<br>in social dilemmas</div>
 
         <!-- Panel A : one dilemma, two levers (ported from fig1-cartoon-panel_v05) -->
         <div>
@@ -398,30 +398,31 @@ text becomes differs.
             </defs>
 
             <!-- ===== OUTER RING : Contracts (external, ambient) ===== -->
-            <rect x="12" y="44" width="576" height="462" rx="32" fill="#E6F0F8" stroke="#3F6A85" stroke-width="2.6"/>
-            <text x="300" y="28" text-anchor="middle" font-size="19" font-weight="800" fill="#3F6A85">Contracts &mdash; external rules</text>
-            <text x="300" y="70" text-anchor="middle" font-size="13" fill="#3F6A85">reshape payoffs &amp; actions &middot; ambient, for all players</text>
-            <!-- seal -->
-            <circle cx="564" cy="48" r="14" fill="#3F6A85"/><text x="564" y="53" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">&sect;</text>
-            <!-- incomplete contract (missing clause + ?) -->
-            <g transform="translate(38,60)">
-              <rect x="0" y="0" width="66" height="34" rx="5" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
-              <line x1="9" y1="10" x2="57" y2="10" stroke="#3F6A85" stroke-width="2"/>
-              <line x1="9" y1="18" x2="57" y2="18" stroke="#8EAFCE" stroke-width="1.8"/>
-              <line x1="9" y1="26" x2="30" y2="26" stroke="#8EAFCE" stroke-width="1.8"/>
-              <line x1="34" y1="26" x2="50" y2="26" stroke="#8EAFCE" stroke-width="1.8" stroke-dasharray="3 3"/>
-              <text x="72" y="30" font-size="15" font-weight="800" fill="#C44A40">?</text>
+            <rect x="12" y="14" width="576" height="492" rx="32" fill="#E6F0F8" stroke="#3F6A85" stroke-width="2.6"/>
+            <text x="300" y="60" text-anchor="middle" font-size="19" font-weight="800" fill="#3F6A85">Contracts &mdash; external rules</text>
+            <text x="300" y="88" text-anchor="middle" font-size="14.5" font-weight="500" fill="#3F6A85">reshape payoffs &amp; actions &middot; ambient, for all players</text>
+            <!-- incomplete contract document (v03 style: ? inside, § seal), enlarged -->
+            <g transform="translate(26,50)">
+              <rect x="0" y="0" width="96" height="46" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="2.2"/>
+              <line x1="13" y1="13" x2="83" y2="13" stroke="#3F6A85" stroke-width="2.4"/>
+              <line x1="13" y1="24" x2="83" y2="24" stroke="#8EAFCE" stroke-width="2.2"/>
+              <line x1="13" y1="34" x2="40" y2="34" stroke="#8EAFCE" stroke-width="2.2"/>
+              <line x1="46" y1="34" x2="68" y2="34" stroke="#8EAFCE" stroke-width="2.2" stroke-dasharray="3 4"/>
+              <text x="80" y="40" text-anchor="middle" font-size="16" font-weight="800" fill="#C44A40">?</text>
+              <circle cx="96" cy="0" r="12" fill="#3F6A85"/>
+              <text x="96" y="5" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">&sect;</text>
             </g>
-            <!-- ambient inward pressure (contract acts inward) -->
+            <!-- ambient inward pressure: contracts act inward on the We-frame -->
             <path d="M22 279 L58 279" stroke="#3F6A85" stroke-width="2.4" marker-end="url(#pa-blue)"/>
             <path d="M578 279 L542 279" stroke="#3F6A85" stroke-width="2.4" marker-end="url(#pa-blue)"/>
 
+            <g transform="translate(0,30)"><!-- lower the We-frame box + contents -->
             <!-- ===== MIDDLE RING : &#8220;We&#8221;-frame (internal) ===== -->
             <rect x="66" y="96" width="468" height="342" rx="26" fill="#EFF6EA" stroke="#4A7A3E" stroke-width="2.2"/>
-            <text x="300" y="120" text-anchor="middle" font-size="16" font-weight="800" fill="#4A7A3E">&#8220;We&#8221;-frame &mdash; internal motivation</text>
-            <text x="300" y="138" text-anchor="middle" font-size="12.5" fill="#4A7A3E">reshapes each agent&#8217;s objective, from the inside</text>
+            <text x="300" y="122" text-anchor="middle" font-size="18" font-weight="800" fill="#4A7A3E">&#8220;We&#8221;-frame &mdash; internal motivation</text>
+            <text x="300" y="142" text-anchor="middle" font-size="14.5" font-weight="500" fill="#4A7A3E">reshapes each agent&#8217;s objective, from the inside</text>
             <!-- objective swap: best for me? -> best for we? -->
-            <text x="238" y="177" text-anchor="middle" font-size="15" fill="#B7B2A2">&#8220;best for me?&#8221;</text>
+            <text x="238" y="177" text-anchor="middle" font-size="15" font-weight="700" fill="#5B5B4F">&#8220;best for me?&#8221;</text>
             <line x1="190" y1="172" x2="286" y2="172" stroke="#C44A40" stroke-width="2.2"/>
             <text x="312" y="178" text-anchor="middle" font-size="17" fill="#4A7A3E">&#8594;</text>
             <text x="388" y="177" text-anchor="middle" font-size="15" font-weight="800" fill="#000">&#8220;best for we?&#8221;</text>
@@ -443,16 +444,14 @@ text becomes differs.
               <text x="97" y="40" text-anchor="middle" font-size="15" fill="#6B6B5A">&minus;5, 9</text>
               <text x="32" y="105" text-anchor="middle" font-size="15" fill="#6B6B5A">9, &minus;5</text>
               <text x="97" y="107" text-anchor="middle" font-size="22" font-weight="800" fill="#C44A40">0, 0</text>
-              <path d="M104 104 L66 66" stroke="#4A7A3E" stroke-width="2.2" marker-end="url(#pa-green)"/>
+              <path d="M82 82 L48 48" stroke="#4A7A3E" stroke-width="2.2" marker-end="url(#pa-green)"/>
             </g>
             <!-- contract fines the defect cell (payoff reshaped) -->
             <line x1="332" y1="344" x2="332" y2="358" stroke="#3F6A85" stroke-width="1.6"/>
             <rect x="300" y="358" width="64" height="22" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
             <text x="332" y="373" text-anchor="middle" font-size="13" font-weight="700" fill="#3F6A85">&sect; &minus; fine</text>
 
-            <!-- action arrows: agents -> game -->
-            <line x1="183" y1="286" x2="231" y2="280" stroke="#5B5B4F" stroke-width="2.2" marker-end="url(#pa-gray)"/>
-            <line x1="417" y1="286" x2="369" y2="280" stroke="#5B5B4F" stroke-width="2.2" marker-end="url(#pa-gray)"/>
+            <!-- (action arrows from agents to the game removed) -->
 
             <!-- Agent 1 (blue) -->
             <g transform="translate(150,296)">
@@ -483,11 +482,12 @@ text becomes differs.
             </g>
             <text x="450" y="376" text-anchor="middle" font-size="18" font-weight="700" fill="#2B2B2B">Agent 2</text>
 
-            <!-- key / legend at the bottom edge -->
-            <rect x="180" y="462" width="14" height="14" rx="3" fill="#E7F1E4" stroke="#4A7A3E" stroke-width="1.4"/>
-            <text x="200" y="473" font-size="14" font-weight="600" fill="#2B2B2B">C = Cooperate</text>
-            <rect x="338" y="462" width="14" height="14" rx="3" fill="#F4D9D4" stroke="#C44A40" stroke-width="1.4"/>
-            <text x="358" y="473" font-size="14" font-weight="600" fill="#2B2B2B">D = Defect</text>
+            <!-- key / legend inside the game box, bottom edge -->
+            <rect x="244" y="384" width="13" height="13" rx="3" fill="#E7F1E4" stroke="#4A7A3E" stroke-width="1.4"/>
+            <text x="262" y="394" font-size="12.5" font-weight="600" fill="#2B2B2B">C = Cooperate</text>
+            <rect x="244" y="402" width="13" height="13" rx="3" fill="#F4D9D4" stroke="#C44A40" stroke-width="1.4"/>
+            <text x="262" y="412" font-size="12.5" font-weight="600" fill="#2B2B2B">D = Defect</text>
+            </g>
           </svg>
         </div>
 
