@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Figure 1 — Overview (cartoon)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5EFE0;
+    --card:#FCF8EE;
+    --card-line:#E3D6BB;
+    --ink:#2B2B2B;
+    --muted:#6B6B5A;
+    --brown:#8B7E67;
+    --label:#8B5A2B;
+
+    --blue:#3F6A85;      /* contract / outside lever */
+    --blue-mid:#8EAFCE;
+    --blue-lt:#B9D5E6;
+    --blue-bg:#DCEBF3;
+
+    --green:#4A7A3E;     /* cooperate / we-frame / inside lever */
+    --green-mid:#A8C879;
+    --green-lt:#C8E0A8;
+    --green-bg:#E7F1E4;
+
+    --red:#C44A40;       /* defect / not-enforced */
+    --red-lt:#F4D9D4;
+
+    --yellow:#E5C067;
+    --head:#FBF5E5;
+    --body:#F0E8D4;
+
+    --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:var(--sans);
+    background:transparent;color:var(--ink);
+    width:1150px;padding:30px 32px;
+  }
+  .fig{display:grid;grid-template-columns:1080px;gap:28px;align-items:start}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .duo .mini{margin-bottom:0}
+  .duo .mini:last-child{border-left:2px dashed #C9BC98;padding-left:20px}
+  /* A + merged C, split by a dashed vertical separator */
+  .acombo{display:grid;grid-template-columns:600px 1fr}
+  .cwrap{border-left:2px dashed #C9BC98;margin-left:16px;padding-left:20px;
+         display:flex;flex-direction:column;justify-content:center}
+  /* dashed horizontal separator between sections */
+  .hsep{border:none;border-top:2px dashed #C9BC98;margin:22px 0 16px}
+
+  .panel-head{
+    font-size:21px;font-weight:700;color:#000;margin:0 0 10px 2px;
+    display:flex;align-items:baseline;gap:9px;
+  }
+  .panel-head .pl{font-weight:800;color:#000}
+  .card{border:none;background:transparent;padding:0}
+  .card svg{display:block;width:100%;height:auto}
+  .cap{
+    font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.5;
+    color:var(--muted);margin:12px 4px 0;
+  }
+  .cap b{font-style:normal;font-weight:700}
+  .cap b.c{color:var(--blue)} .cap b.f{color:var(--green)}
+
+  /* design-notes block (captions + ideas to ponder; comment out later) */
+  .notes{margin:14px 2px 0;color:var(--muted)}
+  .notes .lead{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.5;margin-bottom:10px}
+  .notes .lead b{font-style:normal;font-weight:700}
+  .notes .lead b.c{color:var(--blue)} .notes .lead b.f{color:var(--green)}
+  .notes .todo{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--label);margin-bottom:4px}
+  .notes ul{margin:0;padding-left:18px}
+  .notes li{font-size:13.5px;line-height:1.55;margin:3px 0}
+  .notes li b{color:var(--ink)}
+
+  /* Panel B — testbed cards (no boxes; dashed separators instead) */
+  .mini{border:none;background:transparent;padding:0;margin-bottom:16px}
+  .mini:last-child{margin-bottom:0}
+  .mini .mh{display:flex;align-items:baseline;gap:9px;margin-bottom:4px}
+  .mini h3{font-size:20px;font-weight:700}
+  .mini .bcap{display:flex;justify-content:center;align-items:baseline;gap:9px;margin-top:6px}
+  .mini .tag{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--brown);border:1.5px solid var(--card-line);border-radius:99px;padding:1px 10px}
+  .mini svg{display:block;width:100%;height:auto;margin-top:2px}
+  .mini .note{font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.45;
+    color:var(--muted);margin-top:4px}
+  .mini .note b{font-style:normal;font-weight:700;color:var(--ink)}
+
+  /* Panel C — regime rows (boxes kept, compacted for the merged column) */
+  .kind{border:1.5px solid var(--card-line);border-radius:12px;background:transparent;
+        padding:10px 12px;margin-bottom:12px;
+        display:grid;grid-template-columns:84px 1fr;gap:12px;align-items:center}
+  .kind:last-child{margin-bottom:0}
+  .kind.nl{border-color:var(--green-mid)}
+  .kind.code{border-color:var(--blue-mid)}
+  .kind svg{width:84px;height:54px;display:block}
+  .kind h3{font-size:16.5px;font-weight:700;margin-bottom:3px}
+  .kind p{font-family:var(--serif);font-style:italic;font-size:13.5px;line-height:1.4;color:var(--muted)}
+  .kind p b{font-style:normal;font-weight:700;color:var(--ink)}
+  .kind code{font-family:ui-monospace,Menlo,Consolas,monospace;font-style:normal;font-size:11px;
+    display:inline-block;background:#EDF4F8;border:1px solid var(--blue-lt);border-radius:5px;
+    padding:1px 5px;margin-top:4px;color:var(--blue)}
+  text{font-family:var(--sans)}
+</style>
+</head>
+<body>
+<!--
+Suggested LaTeX caption (replaces the fig:placeholder caption in content.tex):
+
+\textbf{Overview.}
+\textbf{(A)} Agents face a social dilemma: individually rational defection (red) forfeits the
+surplus of mutual cooperation (green). We study two orthogonal levers. \emph{Contracts} act on
+the game from outside, reshaping payoffs and actions (e.g., a fine pinned to defection);
+\emph{``we''-frames} act from inside, shifting each agent's objective from ``what should I do?''
+to ``what should we do?''. Either lever alone, or both together, can move play from mutual
+defection toward mutual cooperation (arrow). Contracts, however, are inherently \emph{incomplete}:
+unobservable or unforeseen contingencies (red ``?'') escape their reach, whereas frames travel
+with the agent's reasoning and remain robust as the environment changes.
+\textbf{(B)} Two testbeds. \emph{TableGames}: one-shot 2$\times$2 games (Prisoner's Dilemma,
+Stag Hunt) expanded to 4$\times$4 with an unobservable effort dimension, so enforcers can verify
+the move but not the effort (moral hazard); the star marks the welfare-optimal outcome.
+\emph{GovSimContract}: five agents repeatedly harvest a shared fishery that regenerates at rate
+$\rho$ over a 12-month horizon, negotiating and voting on a rule each month.
+\textbf{(C)} Three contract regimes: no contract; natural-language contracts (common knowledge,
+unenforced); and code contracts, compiled by a fixed coder LLM into Python that clips actions,
+fines, and transfers automatically. The negotiation phase is identical; only what the agreed
+text becomes differs.
+-->
+<div class="fig">
+
+  <!-- ============ PANEL A : one dilemma, two levers ============ -->
+  <div>
+    <div class="panel-head"><span class="pl">A</span></div>
+    <div class="card">
+      <div class="acombo">
+      <svg viewBox="0 0 600 500" width="600" height="500">
+        <defs>
+          <marker id="a-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#3F6A85"/></marker>
+          <marker id="a-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#4A7A3E"/></marker>
+          <marker id="a-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#5B5B4F"/></marker>
+          <marker id="a-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#C44A40"/></marker>
+        </defs>
+
+        <!-- ===== SCENE 1 : no premeditated contract -> mutual defection (Nash) ===== -->
+        <g transform="translate(0,4)">
+          <rect x="6" y="0" width="588" height="156" rx="18" fill="#F3EEE3" stroke="#DDD3BC" stroke-width="1.5"/>
+          <text x="24" y="26" font-size="14.5" font-weight="700" fill="#2B2B2B">No premeditated contract</text>
+          <!-- light-blue "I" thought bubbles -->
+          <g transform="translate(95,52)">
+            <ellipse cx="0" cy="0" rx="18" ry="12" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.6"/>
+            <circle cx="-3" cy="18" r="2.6" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
+            <circle cx="0" cy="25" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
+            <text x="0" y="5" text-anchor="middle" font-size="14" font-weight="700" fill="#6B6B5A">I</text>
+          </g>
+          <g transform="translate(225,52)">
+            <ellipse cx="0" cy="0" rx="18" ry="12" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.6"/>
+            <circle cx="3" cy="18" r="2.6" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
+            <circle cx="0" cy="25" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
+            <text x="0" y="5" text-anchor="middle" font-size="14" font-weight="700" fill="#6B6B5A">I</text>
+          </g>
+          <!-- no-contract icon between the robots -->
+          <g transform="translate(124,88) scale(0.7)">
+            <rect x="32" y="8" width="40" height="50" rx="5" fill="#fff" stroke="#B7B2A2" stroke-width="2"/>
+            <line x1="40" y1="20" x2="64" y2="20" stroke="#DED8C8" stroke-width="2.6"/>
+            <line x1="40" y1="30" x2="64" y2="30" stroke="#DED8C8" stroke-width="2.6"/>
+            <line x1="24" y1="56" x2="80" y2="10" stroke="#B7B2A2" stroke-width="3.4" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(95,108)">
+            <circle cx="0" cy="-30" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.2"/>
+            <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+            <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="0" cy="16" r="2" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="0.8"/>
+            <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(225,108)">
+            <circle cx="0" cy="-30" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2"/>
+            <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+            <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="0" cy="16" r="2" fill="#E5C067" stroke="#2B2B2B" stroke-width="0.8"/>
+            <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <line x1="246" y1="94" x2="276" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
+          <g transform="translate(292,42)">
+            <rect x="0" y="0" width="84" height="84" fill="#fff" stroke="#9A8F76" stroke-width="1.6"/>
+            <rect x="1" y="1" width="40" height="40" fill="#E7F1E4"/>
+            <rect x="43" y="43" width="40" height="40" fill="#F4D9D4"/>
+            <line x1="42" y1="0" x2="42" y2="84" stroke="#9A8F76" stroke-width="1.3"/>
+            <line x1="0" y1="42" x2="84" y2="42" stroke="#9A8F76" stroke-width="1.3"/>
+            <text x="21" y="-5" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="63" y="-5" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">D</text>
+            <text x="-10" y="25" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="-10" y="67" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">D</text>
+            <text x="21" y="25" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4A7A3E">5, 5</text>
+            <text x="63" y="25" text-anchor="middle" font-size="10.5" fill="#6B6B5A">−5, 9</text>
+            <text x="21" y="67" text-anchor="middle" font-size="10.5" fill="#6B6B5A">9, −5</text>
+            <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
+            <path d="M30 30 L48 48" stroke="#C44A40" stroke-width="2.2" marker-end="url(#a-red)"/>
+          </g>
+          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">Nash equilibrium</text>
+          <line x1="392" y1="94" x2="424" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
+          <!-- payout: nothing gained -->
+          <circle cx="458" cy="94" r="8" fill="none" stroke="#B7B2A2" stroke-width="1.6" stroke-dasharray="3 3"/>
+          <circle cx="484" cy="94" r="8" fill="none" stroke="#B7B2A2" stroke-width="1.6" stroke-dasharray="3 3"/>
+        </g>
+
+        <!-- ===== SCENE 2 : natural language agreement -> (5,5) if honored ===== -->
+        <g transform="translate(0,172)">
+          <rect x="6" y="0" width="588" height="156" rx="18" fill="#EFF6EA" stroke="#A8C879" stroke-width="1.5"/>
+          <text x="24" y="26" font-size="14.5" font-weight="700" fill="#2B2B2B">Natural language agreement</text>
+          <!-- shared spoken rule -->
+          <g transform="translate(98,34)">
+            <rect x="0" y="0" width="180" height="26" rx="8" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
+            <path d="M80 26 l6 8 6 -8 z" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
+            <text x="90" y="17.5" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="12.5" fill="#3B3B3B">“each catches ≤ 10 / mo”</text>
+          </g>
+          <!-- NL agreement icon between the robots -->
+          <g transform="translate(124,88) scale(0.7)">
+            <rect x="16" y="6" width="46" height="54" rx="5" fill="#fff" stroke="#4A7A3E" stroke-width="2"/>
+            <line x1="24" y1="18" x2="54" y2="18" stroke="#4A7A3E" stroke-width="2.6"/>
+            <line x1="24" y1="28" x2="54" y2="28" stroke="#A8C879" stroke-width="2.2"/>
+            <line x1="24" y1="37" x2="48" y2="37" stroke="#A8C879" stroke-width="2.2"/>
+            <path d="M60 48 l11 -8 9 5 -7 10 -9 1 z" fill="#E7F1E4" stroke="#4A7A3E" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M88 46 l-8 -5 -9 4" fill="none" stroke="#4A7A3E" stroke-width="1.8" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(95,108)">
+            <circle cx="0" cy="-30" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.2"/>
+            <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+            <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="0" cy="16" r="2" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="0.8"/>
+            <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(225,108)">
+            <circle cx="0" cy="-30" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2"/>
+            <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+            <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="0" cy="16" r="2" fill="#E5C067" stroke="#2B2B2B" stroke-width="0.8"/>
+            <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <line x1="246" y1="94" x2="276" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
+          <g transform="translate(292,42)">
+            <rect x="0" y="0" width="84" height="84" fill="#fff" stroke="#9A8F76" stroke-width="1.6"/>
+            <rect x="1" y="1" width="40" height="40" fill="#E7F1E4"/>
+            <rect x="43" y="43" width="40" height="40" fill="#F4D9D4"/>
+            <line x1="42" y1="0" x2="42" y2="84" stroke="#9A8F76" stroke-width="1.3"/>
+            <line x1="0" y1="42" x2="84" y2="42" stroke="#9A8F76" stroke-width="1.3"/>
+            <text x="21" y="-5" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="63" y="-5" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">D</text>
+            <text x="-10" y="25" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="-10" y="67" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">D</text>
+            <text x="21" y="25" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4A7A3E">5, 5</text>
+            <text x="63" y="25" text-anchor="middle" font-size="10.5" fill="#6B6B5A">−5, 9</text>
+            <text x="21" y="67" text-anchor="middle" font-size="10.5" fill="#6B6B5A">9, −5</text>
+            <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
+            <path d="M54 54 L36 36" stroke="#4A7A3E" stroke-width="2.2" stroke-dasharray="5 4" marker-end="url(#a-green)"/>
+          </g>
+          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">if honored</text>
+          <line x1="392" y1="94" x2="424" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
+          <!-- payout: higher payoff unlocked -->
+          <g fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2">
+            <circle cx="458" cy="116" r="8"/><circle cx="458" cy="99" r="8"/><circle cx="458" cy="82" r="8"/>
+            <circle cx="484" cy="116" r="8"/><circle cx="484" cy="99" r="8"/><circle cx="484" cy="82" r="8"/>
+          </g>
+        </g>
+
+        <!-- ===== SCENE 3 : codified contract -> (5,5) enforced ===== -->
+        <g transform="translate(0,340)">
+          <rect x="6" y="0" width="588" height="156" rx="18" fill="#EAF2F8" stroke="#8EAFCE" stroke-width="1.5"/>
+          <text x="24" y="26" font-size="14.5" font-weight="700" fill="#2B2B2B">Codified contract policies</text>
+          <!-- the governing code contract -->
+          <g transform="translate(98,32)">
+            <rect x="0" y="0" width="180" height="26" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
+            <text x="90" y="17" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" font-weight="600" fill="#3F6A85">apply_fine('row', 10)</text>
+            <circle cx="180" cy="0" r="8" fill="#3F6A85"/>
+            <text x="180" y="3.5" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">§</text>
+          </g>
+          <!-- text-to-code icon between the robots -->
+          <g transform="translate(124,88) scale(0.7)">
+            <rect x="6" y="9" width="34" height="48" rx="5" fill="#fff" stroke="#3F6A85" stroke-width="2"/>
+            <line x1="12" y1="21" x2="34" y2="21" stroke="#3F6A85" stroke-width="2.4"/>
+            <line x1="12" y1="30" x2="34" y2="30" stroke="#8EAFCE" stroke-width="2.2"/>
+            <line x1="12" y1="38" x2="30" y2="38" stroke="#8EAFCE" stroke-width="2.2"/>
+            <path d="M44 33 h12" stroke="#3F6A85" stroke-width="2.4" marker-end="url(#a-blue)"/>
+            <rect x="62" y="12" width="36" height="42" rx="5" fill="#DCEBF3" stroke="#3F6A85" stroke-width="2"/>
+            <text x="80" y="34" text-anchor="middle" font-size="15" font-weight="800" fill="#3F6A85" font-family="Menlo,Consolas,monospace">&lt;/&gt;</text>
+            <text x="80" y="48" text-anchor="middle" font-size="10" font-weight="700" fill="#3F6A85">auto</text>
+          </g>
+          <g transform="translate(95,108)">
+            <circle cx="0" cy="-30" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.2"/>
+            <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+            <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="0" cy="16" r="2" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="0.8"/>
+            <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(225,108)">
+            <circle cx="0" cy="-30" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2"/>
+            <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+            <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+            <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+            <circle cx="0" cy="16" r="2" fill="#E5C067" stroke="#2B2B2B" stroke-width="0.8"/>
+            <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <line x1="246" y1="94" x2="276" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
+          <g transform="translate(292,42)">
+            <rect x="0" y="0" width="84" height="84" fill="#fff" stroke="#9A8F76" stroke-width="1.6"/>
+            <rect x="1" y="1" width="40" height="40" fill="#E7F1E4"/>
+            <rect x="43" y="43" width="40" height="40" fill="#F4D9D4"/>
+            <line x1="42" y1="0" x2="42" y2="84" stroke="#9A8F76" stroke-width="1.3"/>
+            <line x1="0" y1="42" x2="84" y2="42" stroke="#9A8F76" stroke-width="1.3"/>
+            <text x="21" y="-5" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="63" y="-5" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">D</text>
+            <text x="-10" y="25" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="-10" y="67" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6B5A">D</text>
+            <text x="21" y="25" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4A7A3E">5, 5</text>
+            <text x="63" y="25" text-anchor="middle" font-size="10.5" fill="#6B6B5A">−5, 9</text>
+            <text x="21" y="67" text-anchor="middle" font-size="10.5" fill="#6B6B5A">9, −5</text>
+            <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
+            <path d="M54 54 L36 36" stroke="#4A7A3E" stroke-width="2.2" marker-end="url(#a-green)"/>
+          </g>
+          <text x="334" y="150" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">enforced</text>
+          <line x1="392" y1="94" x2="424" y2="94" stroke="#5B5B4F" stroke-width="2" marker-end="url(#a-gray)"/>
+          <!-- payout: higher payoff unlocked -->
+          <g fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2">
+            <circle cx="458" cy="116" r="8"/><circle cx="458" cy="99" r="8"/><circle cx="458" cy="82" r="8"/>
+            <circle cx="484" cy="116" r="8"/><circle cx="484" cy="99" r="8"/><circle cx="484" cy="82" r="8"/>
+          </g>
+        </g>
+
+      </svg>
+
+      <!-- ===== PANEL B : levers concept (right of dashed separator) ===== -->
+      <div class="cwrap">
+        <div class="panel-head"><span class="pl">B</span></div>
+
+        <!-- levers concept : contracts act from outside, we-frames from inside -->
+        <div>
+          <svg viewBox="0 0 420 412" width="420" height="412">
+            <defs>
+              <marker id="cc-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#3F6A85"/></marker>
+              <marker id="cc-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#5B5B4F"/></marker>
+              <marker id="cc-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#4A7A3E"/></marker>
+            </defs>
+            <text x="210" y="18" text-anchor="middle" font-size="15" font-weight="700" fill="#000">Contracts (external rules)</text>
+            <!-- contract scroll; last clause missing = incompleteness -->
+            <g transform="translate(164,30)">
+              <rect x="0" y="0" width="92" height="44" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="2.2"/>
+              <line x1="12" y1="13" x2="80" y2="13" stroke="#3F6A85" stroke-width="2.4"/>
+              <line x1="12" y1="23" x2="80" y2="23" stroke="#8EAFCE" stroke-width="2.2"/>
+              <line x1="12" y1="33" x2="38" y2="33" stroke="#8EAFCE" stroke-width="2.2"/>
+              <line x1="44" y1="33" x2="64" y2="33" stroke="#8EAFCE" stroke-width="2.2" stroke-dasharray="3 4"/>
+              <text x="76" y="38" text-anchor="middle" font-size="15" font-weight="800" fill="#C44A40">?</text>
+              <circle cx="92" cy="0" r="11" fill="#3F6A85"/>
+              <text x="92" y="4.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">§</text>
+            </g>
+            <path d="M192 80 Q168 94 164 106" fill="none" stroke="#3F6A85" stroke-width="2.2" marker-end="url(#cc-blue)"/>
+            <path d="M228 80 Q252 94 256 106" fill="none" stroke="#3F6A85" stroke-width="2.2" marker-end="url(#cc-blue)"/>
+            <!-- game-state bubble -->
+            <rect x="8" y="110" width="404" height="294" rx="24" fill="#FBF4D8" stroke="#EAD9A6" stroke-width="1.5"/>
+            <text x="210" y="136" text-anchor="middle" font-size="13.5" font-weight="700" fill="#000">We-frames (internal cooperation mechanics)</text>
+            <!-- shared internal frame -->
+            <ellipse cx="210" cy="172" rx="52" ry="19" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.8"/>
+            <text x="210" y="177" text-anchor="middle" font-size="14" font-weight="800" fill="#3F6A85">We, not I</text>
+            <circle cx="150" cy="184" r="3" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.4"/>
+            <circle cx="136" cy="196" r="2.4" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
+            <circle cx="124" cy="208" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
+            <circle cx="270" cy="184" r="3" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.4"/>
+            <circle cx="284" cy="196" r="2.4" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
+            <circle cx="296" cy="208" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
+            <!-- joint action flows into the shared game -->
+            <line x1="120" y1="292" x2="156" y2="326" stroke="#5B5B4F" stroke-width="2" marker-end="url(#cc-gray)"/>
+            <line x1="300" y1="292" x2="264" y2="326" stroke="#5B5B4F" stroke-width="2" marker-end="url(#cc-gray)"/>
+            <g transform="translate(168,300)">
+              <rect x="0" y="0" width="84" height="84" fill="#fff" stroke="#9A8F76" stroke-width="1.6"/>
+              <rect x="1" y="1" width="40" height="40" fill="#E7F1E4"/>
+              <rect x="43" y="43" width="40" height="40" fill="#F4D9D4"/>
+              <line x1="42" y1="0" x2="42" y2="84" stroke="#9A8F76" stroke-width="1.3"/>
+              <line x1="0" y1="42" x2="84" y2="42" stroke="#9A8F76" stroke-width="1.3"/>
+              <text x="21" y="25" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4A7A3E">5, 5</text>
+              <text x="63" y="25" text-anchor="middle" font-size="10.5" fill="#6B6B5A">−5, 9</text>
+              <text x="21" y="67" text-anchor="middle" font-size="10.5" fill="#6B6B5A">9, −5</text>
+              <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
+              <path d="M54 54 L36 36" stroke="#4A7A3E" stroke-width="2.2" marker-end="url(#cc-green)"/>
+            </g>
+            <!-- two robots sharing one internal "We, not I" frame -->
+            <g transform="translate(96,254)">
+              <circle cx="0" cy="-30" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.2"/>
+              <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+              <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+              <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+              <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+              <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+              <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+              <circle cx="0" cy="16" r="2" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="0.8"/>
+              <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+              <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(324,254)">
+              <circle cx="0" cy="-30" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2"/>
+              <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+              <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+              <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+              <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+              <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+              <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+              <circle cx="0" cy="16" r="2" fill="#E5C067" stroke="#2B2B2B" stroke-width="0.8"/>
+              <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+              <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- draft note (the LaTeX caption carries this)
+        <div class="cap" style="margin-top:4px">Same negotiation — only <b>what the text becomes</b> differs.</div>
+        -->
+      </div>
+      </div><!-- /acombo -->
+
+      <!-- draft notes (kept for reference; not part of the figure)
+      <div class="notes">
+        <p class="lead"><b class="c">Contracts</b> reshape the game from outside — payoffs, the action space, enforcement.
+        <b class="f">We-frames</b> reshape reasoning from within — the objective itself. The two levers are
+        orthogonal: either alone, or both together.</p>
+        <p class="todo">Ideas to ponder / draft notes</p>
+        <ul>
+          <li>DONE: green arrow shows levers composing, (0,0) → (5,5).</li>
+          <li>DONE: contract pins a "§ − fine" on the defect cell.</li>
+          <li>DONE: C/D axis labels on the matrix.</li>
+          <li>DONE: incompleteness = dashed missing clause + red "?" on the scroll.</li>
+          <li>SKIPPED: 2×2 lever mini-legend (too busy; the caption carries it).</li>
+        </ul>
+      </div>
+      -->
+    </div>
+
+    <!-- ============ PANEL C : testbeds (side by side under A) ============ -->
+    <hr class="hsep">
+    <div class="panel-head"><span class="pl">C</span></div>
+    <div class="duo">
+
+    <div class="mini">
+      <svg viewBox="0 0 432 174" width="432" height="174">
+        <defs>
+          <marker id="b-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#5B5B4F"/></marker>
+        </defs>
+        <g transform="translate(0,22)">
+
+        <!-- two robots negotiating -->
+        <!-- shared speech bubble -->
+        <g transform="translate(8,4)">
+          <rect x="0" y="0" width="104" height="26" rx="8" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
+          <path d="M46 26 l6 8 6 -8 z" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
+          <text x="52" y="17" text-anchor="middle" font-family="Georgia,serif" font-style="italic"
+                font-size="14" fill="#3B3B3B">agree a rule</text>
+        </g>
+        <!-- robot 1 (blue) -->
+        <g transform="translate(40,76)">
+          <circle cx="0" cy="-30" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.2"/>
+          <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+          <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+          <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+          <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+          <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+          <circle cx="0" cy="16" r="2" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="0.8"/>
+          <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <!-- robot 2 (yellow) -->
+        <g transform="translate(86,76)">
+          <circle cx="0" cy="-30" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2"/>
+          <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
+          <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
+          <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+          <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
+          <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
+          <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
+          <circle cx="0" cy="16" r="2" fill="#E5C067" stroke="#2B2B2B" stroke-width="0.8"/>
+          <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+        </g>
+
+        <line x1="120" y1="72" x2="150" y2="72" stroke="#5B5B4F" stroke-width="2" marker-end="url(#b-gray)"/>
+
+        <!-- 2x2 base game -->
+        <g transform="translate(158,50)">
+          <rect x="0" y="0" width="44" height="44" fill="#fff" stroke="#9A8F76" stroke-width="1.6"/>
+          <rect x="1" y="1" width="20" height="20" fill="#E7F1E4"/>
+          <line x1="22" y1="0" x2="22" y2="44" stroke="#9A8F76" stroke-width="1.2"/>
+          <line x1="0" y1="22" x2="44" y2="22" stroke="#9A8F76" stroke-width="1.2"/>
+        </g>
+
+        <!-- expands with an unobservable effort axis -->
+        <line x1="208" y1="72" x2="240" y2="72" stroke="#5B5B4F" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#b-gray)"/>
+
+        <!-- 4x4 matrix with hidden effort -->
+        <g transform="translate(250,26)">
+          <rect x="0" y="0" width="96" height="96" fill="#fff" stroke="#9A8F76" stroke-width="1.6"/>
+          <line x1="48" y1="0" x2="48" y2="96" stroke="#9A8F76" stroke-width="1.4"/>
+          <line x1="0" y1="48" x2="96" y2="48" stroke="#9A8F76" stroke-width="1.4"/>
+          <line x1="24" y1="0" x2="24" y2="96" stroke="#D8CDB2" stroke-width="1"/>
+          <line x1="72" y1="0" x2="72" y2="96" stroke="#D8CDB2" stroke-width="1"/>
+          <line x1="0" y1="24" x2="96" y2="24" stroke="#D8CDB2" stroke-width="1"/>
+          <line x1="0" y1="72" x2="96" y2="72" stroke="#D8CDB2" stroke-width="1"/>
+          <rect x="1" y="1" width="23" height="23" fill="#E7F1E4"/>
+          <text x="12.5" y="18" text-anchor="middle" font-size="16" fill="#4A7A3E" font-weight="800">★</text>
+          <!-- hidden-effort mask -->
+          <rect x="8" y="-11" width="80" height="19" rx="9.5" fill="#F4D9D4" stroke="#C44A40" stroke-width="1.8"/>
+          <text x="48" y="2.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#C44A40">effort hidden</text>
+        </g>
+
+        <!-- welfare-best cell -->
+        <text x="392" y="66" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">★ best</text>
+        <text x="392" y="82" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#6B6B5A">for all</text>
+        </g>
+      </svg>
+      <div class="bcap"><h3>TableGames</h3></div>
+    </div>
+
+    <div class="mini">
+      <svg viewBox="0 0 432 244" width="432" height="244">
+        <defs>
+          <marker id="g-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto">
+            <path d="M0 0 L10 5 L0 10 Z" fill="#3F6A85"/></marker>
+        </defs>
+        <g transform="translate(0,22)">
+        <!-- pond -->
+        <ellipse cx="216" cy="142" rx="182" ry="46" fill="#B9D5E6" stroke="#3F6A85" stroke-width="2.4"/>
+        <!-- stock regenerates x rho -->
+        <path d="M 331 136 A 12 12 0 1 0 342 143" fill="none" stroke="#3F6A85" stroke-width="2" marker-end="url(#g-blue)"/>
+        <text x="330" y="152.5" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3F6A85">×ρ</text>
+        <!-- gold fish -->
+        <g stroke="#8B7E67" stroke-width="1.1">
+          <g transform="translate(150,152)"><ellipse cx="0" cy="0" rx="11" ry="5.5" fill="#E5C067"/><path d="M-10 0 l-7 -5 v10 z" fill="#E5C067"/><circle cx="5" cy="-1" r="1.1" fill="#2B2B2B" stroke="none"/></g>
+          <g transform="translate(272,160)"><ellipse cx="0" cy="0" rx="11" ry="5.5" fill="#E5C067"/><path d="M10 0 l7 -5 v10 z" fill="#E5C067"/><circle cx="-5" cy="-1" r="1.1" fill="#2B2B2B" stroke="none"/></g>
+          <g transform="translate(206,168)"><ellipse cx="0" cy="0" rx="9" ry="4.6" fill="#E5C067"/><path d="M-8 0 l-6 -4 v8 z" fill="#E5C067"/><circle cx="4" cy="-1" r="1" fill="#2B2B2B" stroke="none"/></g>
+        </g>
+
+        <!-- 5 smiling fisher robots -->
+        <!-- R1 blue -->
+        <g transform="translate(58,66)"><circle cx="0" cy="-30" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.2"/><line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/><rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/><circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/><circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/><path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/><rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/><circle cx="0" cy="16" r="2" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="0.8"/><line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/></g>
+        <!-- R2 yellow -->
+        <g transform="translate(137,56)"><circle cx="0" cy="-30" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2"/><line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/><rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/><circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/><circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/><path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/><rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/><circle cx="0" cy="16" r="2" fill="#E5C067" stroke="#2B2B2B" stroke-width="0.8"/><line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/></g>
+        <!-- R3 green (center) -->
+        <g transform="translate(216,50)"><circle cx="0" cy="-30" r="3" fill="#A8C879" stroke="#2B2B2B" stroke-width="1.2"/><line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/><rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/><circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/><circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/><path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/><rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/><circle cx="0" cy="16" r="2" fill="#A8C879" stroke="#2B2B2B" stroke-width="0.8"/><line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/></g>
+        <!-- R4 red -->
+        <g transform="translate(295,56)"><circle cx="0" cy="-30" r="3" fill="#C44A40" stroke="#2B2B2B" stroke-width="1.2"/><line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/><rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/><circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/><circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/><path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/><rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/><circle cx="0" cy="16" r="2" fill="#C44A40" stroke="#2B2B2B" stroke-width="0.8"/><line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/></g>
+        <!-- R5 white -->
+        <g transform="translate(374,66)"><circle cx="0" cy="-30" r="3" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.2"/><line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/><rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/><circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/><circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/><path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/><rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/><circle cx="0" cy="16" r="2" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="0.8"/><line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/><line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/></g>
+
+        <!-- fishing arms + rods + lines + bobbers -->
+        <g fill="none" stroke-linecap="round">
+          <!-- R1 -->
+          <path d="M66 80 L92 92" stroke="#2B2B2B" stroke-width="2"/>
+          <path d="M92 92 L112 102" stroke="#8B5A2B" stroke-width="2.4"/>
+          <path d="M112 102 L112 118" stroke="#2B2B2B" stroke-width="0.8"/>
+          <circle cx="112" cy="118" r="2.6" fill="#C44A40" stroke="#2B2B2B" stroke-width="0.8"/>
+          <!-- R2 -->
+          <path d="M145 70 L166 84" stroke="#2B2B2B" stroke-width="2"/>
+          <path d="M166 84 L178 100" stroke="#8B5A2B" stroke-width="2.4"/>
+          <path d="M178 100 L178 120" stroke="#2B2B2B" stroke-width="0.8"/>
+          <circle cx="178" cy="120" r="2.6" fill="#C44A40" stroke="#2B2B2B" stroke-width="0.8"/>
+          <!-- R3 -->
+          <path d="M224 64 L244 80" stroke="#2B2B2B" stroke-width="2"/>
+          <path d="M244 80 L250 100" stroke="#8B5A2B" stroke-width="2.4"/>
+          <path d="M250 100 L250 120" stroke="#2B2B2B" stroke-width="0.8"/>
+          <circle cx="250" cy="120" r="2.6" fill="#C44A40" stroke="#2B2B2B" stroke-width="0.8"/>
+          <!-- R4 -->
+          <path d="M303 70 L320 84" stroke="#2B2B2B" stroke-width="2"/>
+          <path d="M320 84 L314 102" stroke="#8B5A2B" stroke-width="2.4"/>
+          <path d="M314 102 L314 120" stroke="#2B2B2B" stroke-width="0.8"/>
+          <circle cx="314" cy="120" r="2.6" fill="#C44A40" stroke="#2B2B2B" stroke-width="0.8"/>
+          <!-- R5 -->
+          <path d="M366 80 L352 92" stroke="#2B2B2B" stroke-width="2"/>
+          <path d="M352 92 L346 104" stroke="#8B5A2B" stroke-width="2.4"/>
+          <path d="M346 104 L346 120" stroke="#2B2B2B" stroke-width="0.8"/>
+          <circle cx="346" cy="120" r="2.6" fill="#C44A40" stroke="#2B2B2B" stroke-width="0.8"/>
+        </g>
+
+        <!-- speech bubble on center robot -->
+        <g>
+          <rect x="160" y="0" width="112" height="24" rx="8" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
+          <path d="M210 24 l6 8 6 -8 z" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
+          <text x="216" y="16" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="14" fill="#3B3B3B">don’t overfish</text>
+        </g>
+        </g>
+      </svg>
+      <div class="bcap"><h3>GovSimContract</h3></div>
+    </div>
+
+    </div><!-- /duo -->
+
+    <!-- draft notes (kept for reference; not part of the figure)
+    <div class="notes">
+      <p class="lead"><b>TableGames</b> — enforcers see the move, not the effort; the 4×4 makes that effort
+      dimension incontractible (moral hazard). <b>GovSimContract</b> — agents vote a rule each month, and
+      over-harvesting collapses the lake for everyone.</p>
+      <p class="todo">Ideas to ponder / draft notes</p>
+      <ul>
+        <li>DONE: 2×2 → 4×4 expansion shown explicitly (dashed arrow).</li>
+        <li>DONE: ★ marked "best for all".</li>
+        <li>DONE: ×ρ regeneration loop on the pond.</li>
+        <li>SKIPPED: ×12 monthly cycle diagram (the "repeated · 12 mo" tag carries it).</li>
+        <li>Agent-count cue: 2 for TableGames, 5 for GovSim (consistent).</li>
+      </ul>
+    </div>
+    -->
+  </div>
+
+</div>
+</body>
+</html>
