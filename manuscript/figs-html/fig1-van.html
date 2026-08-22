@@ -47,7 +47,7 @@
   .duo .mini{margin-bottom:0}
   .duo .mini:last-child{border-left:2px dashed #C9BC98;padding-left:20px}
   /* Panel A (levers, left) + Panel B (scenes, right), split by a dashed vertical separator */
-  .acombo{display:grid;grid-template-columns:1fr 600px}
+  .acombo{display:grid;grid-template-columns:1fr 1fr}
   .cwrap{grid-column:1;grid-row:1;margin-right:16px;padding-right:20px;
          display:flex;flex-direction:column;justify-content:flex-start}
   .swrap{grid-column:2;grid-row:1;border-left:2px dashed #C9BC98;margin-left:16px;padding-left:20px}
@@ -140,7 +140,7 @@ text becomes differs.
       <div class="acombo">
       <!-- RIGHT column: dilemma scenes = Panel B -->
       <div class="swrap">
-      <div class="panel-head"><span class="pl">B</span></div>
+      <div class="panel-head"><span class="pl">B</span> Three experimental contract conditions</div>
       <svg viewBox="0 0 600 500" width="600" height="500">
         <defs>
           <marker id="a-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
@@ -170,8 +170,8 @@ text becomes differs.
             <circle cx="0" cy="25" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
             <text x="0" y="5" text-anchor="middle" font-size="14" font-weight="700" fill="#6B6B5A">I</text>
           </g>
-          <!-- no-contract icon between the robots -->
-          <g transform="translate(124,88) scale(0.7)">
+          <!-- no-contract icon between the robots (enlarged 0.7 -> 0.9) -->
+          <g transform="translate(113.6,81.4) scale(0.9)">
             <rect x="32" y="8" width="40" height="50" rx="5" fill="#fff" stroke="#B7B2A2" stroke-width="2"/>
             <line x1="40" y1="20" x2="64" y2="20" stroke="#DED8C8" stroke-width="2.6"/>
             <line x1="40" y1="30" x2="64" y2="30" stroke="#DED8C8" stroke-width="2.6"/>
@@ -237,8 +237,8 @@ text becomes differs.
             <path d="M80 26 l6 8 6 -8 z" fill="#fff" stroke="#8B7E67" stroke-width="1.6"/>
             <text x="90" y="17.5" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="12.5" fill="#3B3B3B">“each catches ≤ 10 / mo”</text>
           </g>
-          <!-- NL agreement icon: contract document on top, handshake below -->
-          <g transform="translate(124,88) scale(0.7)">
+          <!-- NL agreement icon: contract document on top, handshake below (enlarged 0.7 -> 0.9) -->
+          <g transform="translate(124,80.85) scale(0.9)">
             <!-- contract document -->
             <rect x="22" y="0" width="36" height="40" rx="5" fill="#fff" stroke="#4A7A3E" stroke-width="2"/>
             <line x1="28" y1="10" x2="52" y2="10" stroke="#4A7A3E" stroke-width="2.6"/>
@@ -309,11 +309,11 @@ text becomes differs.
           <rect x="6" y="0" width="588" height="156" rx="18" fill="#EAF2F8" stroke="#8EAFCE" stroke-width="1.5"/>
           <text x="24" y="26" font-size="14.5" font-weight="700" fill="#2B2B2B">Codified contract policies</text>
           <!-- the governing code contract -->
-          <g transform="translate(98,32)">
-            <rect x="0" y="0" width="158" height="26" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
-            <text x="79" y="17" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" font-weight="600" fill="#3F6A85">apply_fine('row', 10)</text>
-            <circle cx="158" cy="0" r="8" fill="#3F6A85"/>
-            <text x="158" y="3.5" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">§</text>
+          <g transform="translate(98,44)">
+            <rect x="0" y="0" width="148" height="26" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
+            <text x="74" y="17" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" font-weight="600" fill="#3F6A85">apply_fine('row', 10)</text>
+            <circle cx="148" cy="0" r="8" fill="#3F6A85"/>
+            <text x="148" y="3.5" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">§</text>
           </g>
           <!-- text-to-code icon between the robots (enlarged 0.7 -> 0.9, re-centered) -->
           <g transform="translate(113.6,81.4) scale(0.9)">
@@ -383,87 +383,111 @@ text becomes differs.
 
       <!-- ===== LEFT column: levers concept = Panel A ===== -->
       <div class="cwrap">
-        <div class="panel-head"><span class="pl">A</span></div>
+        <div class="panel-head"><span class="pl">A</span> Intrinsic vs. extrinsic mechanisms in social dilemmas</div>
 
-        <!-- levers concept : contracts act from outside, we-frames from inside -->
+        <!-- Panel A : one dilemma, two levers (ported from fig1-cartoon-panel_v05) -->
         <div>
-          <svg viewBox="0 0 420 412" width="420" height="412">
+          <svg viewBox="0 0 600 520" width="600" height="520">
             <defs>
-              <marker id="cc-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <marker id="pa-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
                 <path d="M0 0 L10 5 L0 10 Z" fill="#3F6A85"/></marker>
-              <marker id="cc-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                <path d="M0 0 L10 5 L0 10 Z" fill="#5B5B4F"/></marker>
-              <marker id="cc-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <marker id="pa-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
                 <path d="M0 0 L10 5 L0 10 Z" fill="#4A7A3E"/></marker>
+              <marker id="pa-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#5B5B4F"/></marker>
             </defs>
-            <text x="210" y="18" text-anchor="middle" font-size="15" font-weight="700" fill="#000">Contracts (external rules)</text>
-            <!-- contract scroll; last clause missing = incompleteness -->
-            <g transform="translate(164,30)">
-              <rect x="0" y="0" width="92" height="44" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="2.2"/>
-              <line x1="12" y1="13" x2="80" y2="13" stroke="#3F6A85" stroke-width="2.4"/>
-              <line x1="12" y1="23" x2="80" y2="23" stroke="#8EAFCE" stroke-width="2.2"/>
-              <line x1="12" y1="33" x2="38" y2="33" stroke="#8EAFCE" stroke-width="2.2"/>
-              <line x1="44" y1="33" x2="64" y2="33" stroke="#8EAFCE" stroke-width="2.2" stroke-dasharray="3 4"/>
-              <text x="76" y="38" text-anchor="middle" font-size="15" font-weight="800" fill="#C44A40">?</text>
-              <circle cx="92" cy="0" r="11" fill="#3F6A85"/>
-              <text x="92" y="4.5" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">§</text>
+
+            <!-- ===== OUTER RING : Contracts (external, ambient) ===== -->
+            <rect x="12" y="44" width="576" height="462" rx="32" fill="#E6F0F8" stroke="#3F6A85" stroke-width="2.6"/>
+            <text x="300" y="28" text-anchor="middle" font-size="19" font-weight="800" fill="#3F6A85">Contracts &mdash; external rules</text>
+            <text x="300" y="70" text-anchor="middle" font-size="13" fill="#3F6A85">reshape payoffs &amp; actions &middot; ambient, for all players</text>
+            <!-- seal -->
+            <circle cx="564" cy="48" r="14" fill="#3F6A85"/><text x="564" y="53" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">&sect;</text>
+            <!-- incomplete contract (missing clause + ?) -->
+            <g transform="translate(38,60)">
+              <rect x="0" y="0" width="66" height="34" rx="5" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
+              <line x1="9" y1="10" x2="57" y2="10" stroke="#3F6A85" stroke-width="2"/>
+              <line x1="9" y1="18" x2="57" y2="18" stroke="#8EAFCE" stroke-width="1.8"/>
+              <line x1="9" y1="26" x2="30" y2="26" stroke="#8EAFCE" stroke-width="1.8"/>
+              <line x1="34" y1="26" x2="50" y2="26" stroke="#8EAFCE" stroke-width="1.8" stroke-dasharray="3 3"/>
+              <text x="72" y="30" font-size="15" font-weight="800" fill="#C44A40">?</text>
             </g>
-            <path d="M192 80 Q168 94 164 106" fill="none" stroke="#3F6A85" stroke-width="2.2" marker-end="url(#cc-blue)"/>
-            <path d="M228 80 Q252 94 256 106" fill="none" stroke="#3F6A85" stroke-width="2.2" marker-end="url(#cc-blue)"/>
-            <!-- game-state bubble -->
-            <rect x="8" y="110" width="404" height="294" rx="24" fill="#FBF4D8" stroke="#EAD9A6" stroke-width="1.5"/>
-            <text x="210" y="136" text-anchor="middle" font-size="13.5" font-weight="700" fill="#000">We-frames (internal cooperation mechanics)</text>
-            <!-- shared internal frame -->
-            <ellipse cx="210" cy="172" rx="52" ry="19" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.8"/>
-            <text x="210" y="177" text-anchor="middle" font-size="14" font-weight="800" fill="#3F6A85">We, not I</text>
-            <circle cx="150" cy="184" r="3" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.4"/>
-            <circle cx="136" cy="196" r="2.4" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
-            <circle cx="124" cy="208" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
-            <circle cx="270" cy="184" r="3" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.4"/>
-            <circle cx="284" cy="196" r="2.4" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.3"/>
-            <circle cx="296" cy="208" r="1.8" fill="#E3F0F7" stroke="#8EAFCE" stroke-width="1.2"/>
-            <!-- joint action flows into the shared game -->
-            <line x1="120" y1="292" x2="156" y2="326" stroke="#5B5B4F" stroke-width="2" marker-end="url(#cc-gray)"/>
-            <line x1="300" y1="292" x2="264" y2="326" stroke="#5B5B4F" stroke-width="2" marker-end="url(#cc-gray)"/>
-            <g transform="translate(168,300)">
-              <rect x="0" y="0" width="84" height="84" fill="#fff" stroke="#9A8F76" stroke-width="1.6"/>
-              <rect x="1" y="1" width="40" height="40" fill="#E7F1E4"/>
-              <rect x="43" y="43" width="40" height="40" fill="#F4D9D4"/>
-              <line x1="42" y1="0" x2="42" y2="84" stroke="#9A8F76" stroke-width="1.3"/>
-              <line x1="0" y1="42" x2="84" y2="42" stroke="#9A8F76" stroke-width="1.3"/>
-              <text x="21" y="25" text-anchor="middle" font-size="12.5" font-weight="800" fill="#4A7A3E">5, 5</text>
-              <text x="63" y="25" text-anchor="middle" font-size="10.5" fill="#6B6B5A">−5, 9</text>
-              <text x="21" y="67" text-anchor="middle" font-size="10.5" fill="#6B6B5A">9, −5</text>
-              <text x="63" y="67" text-anchor="middle" font-size="12.5" font-weight="800" fill="#C44A40">0, 0</text>
-              <path d="M54 54 L36 36" stroke="#4A7A3E" stroke-width="2.2" marker-end="url(#cc-green)"/>
+            <!-- ambient inward pressure (contract acts inward) -->
+            <path d="M22 279 L58 279" stroke="#3F6A85" stroke-width="2.4" marker-end="url(#pa-blue)"/>
+            <path d="M578 279 L542 279" stroke="#3F6A85" stroke-width="2.4" marker-end="url(#pa-blue)"/>
+
+            <!-- ===== MIDDLE RING : &#8220;We&#8221;-frame (internal) ===== -->
+            <rect x="66" y="96" width="468" height="342" rx="26" fill="#EFF6EA" stroke="#4A7A3E" stroke-width="2.2"/>
+            <text x="300" y="120" text-anchor="middle" font-size="16" font-weight="800" fill="#4A7A3E">&#8220;We&#8221;-frame &mdash; internal motivation</text>
+            <text x="300" y="138" text-anchor="middle" font-size="12.5" fill="#4A7A3E">reshapes each agent&#8217;s objective, from the inside</text>
+            <!-- objective swap: best for me? -> best for we? -->
+            <text x="238" y="177" text-anchor="middle" font-size="15" fill="#B7B2A2">&#8220;best for me?&#8221;</text>
+            <line x1="190" y1="172" x2="286" y2="172" stroke="#C44A40" stroke-width="2.2"/>
+            <text x="312" y="178" text-anchor="middle" font-size="17" fill="#4A7A3E">&#8594;</text>
+            <text x="388" y="177" text-anchor="middle" font-size="15" font-weight="800" fill="#000">&#8220;best for we?&#8221;</text>
+
+            <!-- ===== INNER CORE : the game ===== -->
+            <rect x="205" y="196" width="190" height="224" rx="16" fill="#FBF4D8" stroke="#EAD9A6" stroke-width="1.5"/>
+            <!-- C/D axis labels -->
+            <text x="267" y="208" text-anchor="middle" font-size="13" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="332" y="208" text-anchor="middle" font-size="13" font-weight="600" fill="#6B6B5A">D</text>
+            <text x="226" y="252" text-anchor="middle" font-size="13" font-weight="600" fill="#6B6B5A">C</text>
+            <text x="226" y="317" text-anchor="middle" font-size="13" font-weight="600" fill="#6B6B5A">D</text>
+            <g transform="translate(235,214)">
+              <rect x="0" y="0" width="130" height="130" fill="#fff" stroke="#9A8F76" stroke-width="1.8"/>
+              <rect x="1" y="1" width="63" height="63" fill="#E7F1E4"/>
+              <rect x="66" y="66" width="63" height="63" fill="#F4D9D4"/>
+              <line x1="65" y1="0" x2="65" y2="130" stroke="#9A8F76" stroke-width="1.4"/>
+              <line x1="0" y1="65" x2="130" y2="65" stroke="#9A8F76" stroke-width="1.4"/>
+              <text x="32" y="42" text-anchor="middle" font-size="22" font-weight="800" fill="#4A7A3E">5, 5</text>
+              <text x="97" y="40" text-anchor="middle" font-size="15" fill="#6B6B5A">&minus;5, 9</text>
+              <text x="32" y="105" text-anchor="middle" font-size="15" fill="#6B6B5A">9, &minus;5</text>
+              <text x="97" y="107" text-anchor="middle" font-size="22" font-weight="800" fill="#C44A40">0, 0</text>
+              <path d="M104 104 L66 66" stroke="#4A7A3E" stroke-width="2.2" marker-end="url(#pa-green)"/>
             </g>
-            <!-- two robots sharing one internal "We, not I" frame -->
-            <g transform="translate(96,254)">
-              <circle cx="0" cy="-30" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.2"/>
-              <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
-              <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
-              <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
-              <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
-              <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
-              <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
-              <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
-              <circle cx="0" cy="16" r="2" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="0.8"/>
-              <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
-              <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <!-- contract fines the defect cell (payoff reshaped) -->
+            <line x1="332" y1="344" x2="332" y2="358" stroke="#3F6A85" stroke-width="1.6"/>
+            <rect x="300" y="358" width="64" height="22" rx="6" fill="#DCEBF3" stroke="#3F6A85" stroke-width="1.8"/>
+            <text x="332" y="373" text-anchor="middle" font-size="13" font-weight="700" fill="#3F6A85">&sect; &minus; fine</text>
+
+            <!-- action arrows: agents -> game -->
+            <line x1="183" y1="286" x2="231" y2="280" stroke="#5B5B4F" stroke-width="2.2" marker-end="url(#pa-gray)"/>
+            <line x1="417" y1="286" x2="369" y2="280" stroke="#5B5B4F" stroke-width="2.2" marker-end="url(#pa-gray)"/>
+
+            <!-- Agent 1 (blue) -->
+            <g transform="translate(150,296)">
+              <circle cx="0" cy="-43" r="4" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1.5"/>
+              <line x1="0" y1="-39" x2="0" y2="-32" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="-28" y="-32" width="56" height="44" rx="8" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2.2"/>
+              <circle cx="-10" cy="-13" r="4" fill="#2B2B2B"/><circle cx="10" cy="-13" r="4" fill="#2B2B2B"/>
+              <path d="M-8 1 Q0 7 8 1" fill="none" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="0" y1="12" x2="0" y2="17" stroke="#2B2B2B" stroke-width="2"/>
+              <rect x="-22" y="17" width="44" height="28" rx="5" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2.2"/>
+              <circle cx="0" cy="31" r="3" fill="#8EAFCE" stroke="#2B2B2B" stroke-width="1"/>
+              <line x1="-8" y1="45" x2="-8" y2="60" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="8" y1="45" x2="8" y2="60" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
             </g>
-            <g transform="translate(324,254)">
-              <circle cx="0" cy="-30" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.2"/>
-              <line x1="0" y1="-27" x2="0" y2="-22" stroke="#2B2B2B" stroke-width="1.8" stroke-linecap="round"/>
-              <rect x="-15" y="-22" width="30" height="26" rx="6" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2"/>
-              <circle cx="-6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="-5.2" cy="-11.8" r="0.8" fill="#FBF5E5"/>
-              <circle cx="6" cy="-11" r="2.6" fill="#2B2B2B"/><circle cx="6.8" cy="-11.8" r="0.8" fill="#FBF5E5"/>
-              <path d="M-5 -3 Q0 3 5 -3" fill="none" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
-              <line x1="0" y1="4" x2="0" y2="8" stroke="#2B2B2B" stroke-width="1.8"/>
-              <rect x="-11" y="8" width="22" height="16" rx="4" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2"/>
-              <circle cx="0" cy="16" r="2" fill="#E5C067" stroke="#2B2B2B" stroke-width="0.8"/>
-              <line x1="-6" y1="24" x2="-6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
-              <line x1="6" y1="24" x2="6" y2="36" stroke="#2B2B2B" stroke-width="2" stroke-linecap="round"/>
+            <text x="150" y="376" text-anchor="middle" font-size="18" font-weight="700" fill="#2B2B2B">Agent 1</text>
+            <!-- Agent 2 (yellow) -->
+            <g transform="translate(450,296)">
+              <circle cx="0" cy="-43" r="4" fill="#E5C067" stroke="#2B2B2B" stroke-width="1.5"/>
+              <line x1="0" y1="-39" x2="0" y2="-32" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
+              <rect x="-28" y="-32" width="56" height="44" rx="8" fill="#FBF5E5" stroke="#2B2B2B" stroke-width="2.2"/>
+              <circle cx="-10" cy="-13" r="4" fill="#2B2B2B"/><circle cx="10" cy="-13" r="4" fill="#2B2B2B"/>
+              <path d="M-8 1 Q0 7 8 1" fill="none" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="0" y1="12" x2="0" y2="17" stroke="#2B2B2B" stroke-width="2"/>
+              <rect x="-22" y="17" width="44" height="28" rx="5" fill="#F0E8D4" stroke="#2B2B2B" stroke-width="2.2"/>
+              <circle cx="0" cy="31" r="3" fill="#E5C067" stroke="#2B2B2B" stroke-width="1"/>
+              <line x1="-8" y1="45" x2="-8" y2="60" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
+              <line x1="8" y1="45" x2="8" y2="60" stroke="#2B2B2B" stroke-width="2.2" stroke-linecap="round"/>
             </g>
+            <text x="450" y="376" text-anchor="middle" font-size="18" font-weight="700" fill="#2B2B2B">Agent 2</text>
+
+            <!-- key / legend at the bottom edge -->
+            <rect x="180" y="462" width="14" height="14" rx="3" fill="#E7F1E4" stroke="#4A7A3E" stroke-width="1.4"/>
+            <text x="200" y="473" font-size="14" font-weight="600" fill="#2B2B2B">C = Cooperate</text>
+            <rect x="338" y="462" width="14" height="14" rx="3" fill="#F4D9D4" stroke="#C44A40" stroke-width="1.4"/>
+            <text x="358" y="473" font-size="14" font-weight="600" fill="#2B2B2B">D = Defect</text>
           </svg>
         </div>
 
